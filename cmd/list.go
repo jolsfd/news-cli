@@ -30,7 +30,8 @@ var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "list articles",
 	Long: `Show headline, description, link and time from articles.
-Number of displayed items can be changed in the config file or via flags.`,
+Number of displayed items can be changed in the config file or via flags.
+To see other feeds than those in the config file, you can provide news feeds urls as arguments.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		list(cmd, args)
 	},

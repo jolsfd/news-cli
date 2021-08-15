@@ -45,7 +45,7 @@ var feeds []NewsFeed
 var rootCmd = &cobra.Command{
 	Use:   "news-cli",
 	Short: "A CLI news reader for atom feeds",
-	Long:  `Read atom feeds (e.g. heise online newsfeed and show details on the command line`,
+	Long:  `Read atom feeds (e.g. heise online newsfeed and show details on the command line or web server)`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -64,7 +64,7 @@ func init() {
 	// Global flags.
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.news-cli.yaml)")
 	rootCmd.PersistentFlags().IntVarP(&count, "count", "c", 5, "number of news")
-	rootCmd.PersistentFlags().BoolVarP(&ignore, "ignore", "i", false, "ignore value from config file")
+	rootCmd.PersistentFlags().BoolVarP(&ignore, "ignore", "i", false, "ignore count value from config file")
 
 	// Version.
 	rootCmd.Version = verison

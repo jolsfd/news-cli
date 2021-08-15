@@ -35,7 +35,8 @@ var serveCmd = &cobra.Command{
 	Use:   "serve",
 	Short: "start local web server",
 	Long: `Start local web server where articles will be displayed.
-Number of displayed items can be changed in the config file or via flags.`,
+Number of displayed items can be changed in the config file or via flags.
+To see other feeds than those in the config file, you can provide news feeds urls as arguments.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		serve(cmd, args)
 	},
