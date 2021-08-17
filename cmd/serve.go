@@ -22,13 +22,18 @@ THE SOFTWARE.
 package cmd
 
 import (
+	"embed"
 	"fmt"
 	"html/template"
+	"io/fs"
 	"log"
 	"net/http"
 
 	"github.com/spf13/cobra"
 )
+
+//go:embed template
+var templateData embed.FS
 
 // serveCmd represents the serve command
 var serveCmd = &cobra.Command{
@@ -55,7 +60,9 @@ func serve(cmd *cobra.Command, args []string) {
 	fmt.Printf("Web server started on port %s. End server with key combination [Ctrl + C].\n", cfg.Port)
 
 	// Fileserver for css.
-	fileServer := http.FileServer(http.Dir(cssDir))
+	fs, err := fs.Sub(templateData, cssPath)
+	checkError(err)
+	fileServer := http.FileServer(http.FS(fs))
 	http.Handle("/", fileServer)
 
 	// Handle news.
@@ -78,7 +85,7 @@ func newsHandler(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	// Parse html.
-	html, err := template.ParseFiles(htmlPath)
+	html, err := template.ParseFS(templateData, htmlPath)
 	checkError(err)
 	err = html.Execute(writer, news)
 	checkError(err)

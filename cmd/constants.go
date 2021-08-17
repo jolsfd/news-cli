@@ -3,7 +3,7 @@ package cmd
 // Constants for web server.
 const (
 	htmlPath = "template/view.html"
-	cssDir   = "./template"
+	cssPath  = "template"
 )
 
 // Constants for config file
