@@ -1,4 +1,3 @@
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/jolsfd/news-cli)
 [![License](https://img.shields.io/github/license/jolsfd/news-cli.svg)](https://github.com/jolsfd/news-cli/blob/main/LICENSE)
 
 
